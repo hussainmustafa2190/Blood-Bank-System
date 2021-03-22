@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<html> 
+<head> 
+<script type="text/javascript">
+
+function bidname()
+{
+var c = /[$&+,:;=?@#|'<>.^*()%!-]/g;
+var asmall=/[a-z]/g;
+var abig=/[A-Z]/g;
+var t=new String();
+	t = document.f.text4.value;
+	if((t=="")||(t==" "))	
+	{
+		alert("Please enter a valid admin id!");
+	}
+	else if(t.match(c))
+	{
+		alert("No special characters in admin id!");
+	}
+	else if(t.match(asmall) || t.match(abig))
+	{
+		alert("No characters in admin id!");
+	}
+    else if(t.length>6 || t.length<=5)
+    {
+         alert("invalid id!");
+	}
+}
+
+</script>
+</head> 
+<body> 
+  	
+<center> 
+<h1>Admin Login</h1></center> 
+<form type='POST' action="adminform.html" name='f' align="center" style="font-family: cursive;"> <br> 
+admin id:<input align="left"  type="text" name="text4" placeholder='Enter your admin id'  onfocusout="bidname()"><br><br>
+Password:<input  type="password" name="pword"  placeholder="Set Password"><br><br> 
+<button  type="submit" value="Submit">Submit</button> 
+</form> 
+</div> </div> 
+</body> </html>

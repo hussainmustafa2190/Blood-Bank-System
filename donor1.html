@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+<script type="text/javascript">
+function fname()
+{
+var c =/[$&+,:;=?@#|'<>.^*()%!-]/g;
+var num=/[0-9]/g;
+var s=new String();
+s = document.f.text1.value;
+if((s=="")||(s==" "))	
+{
+	alert("Please enter a valid Donor Name!");
+}
+if(s.match(c))
+{
+	alert("No special characters in Donor Name!");
+}
+if(s.match(num))
+{
+	alert("No numbers in Donor Name!");
+}
+}
+function phone()
+{
+var c = /[$&+,:;=?@#|'<>.^*()%!-]/g;
+var asmall=/[a-z]/g;
+var abig=/[A-Z]/g;
+var t=new String();
+	t = document.f.text3.value;
+	if((t=="")||(t==" "))	
+	{
+		alert("Please enter a valid Phone Number!");
+	}
+	else if(t.match(c))
+	{
+		alert("No special characters in Phone Number!");
+	}
+	else if(t.match(asmall) || t.match(abig))
+	{
+		alert("No characters in Phone Number!");
+	}
+    else if(t.length>10 || t.length<=9)
+    {
+         alert("invalid Phone Number!");
+	}
+}
+
+
+</script>
+</head> 
+<body> 
+  
+<center> 
+<h1>Add Donor</h1></center> 
+<form method='POST' action="dnr.php" name='f' align="center" style="font-family: cursive;"> <br> 
+Donor name:<input align="left"  type="text" name="dname" placeholder='Enter your first Name'  onfocusout="fname()"><br><br> 
+
+Blood Group:<select name="bgroup" >
+<option a><option a>o+<option a>o-<option a>b+<option a>b-<option a>ab+<option a>ab-<option a>a+<option a>a-</select>
+</select><br><br>
+Phone_no:<input  type="text" name="phno" placeholder='Enter your Phone Number' onfocusout="phone()" ><br><br> 
+Address:<input type="text" name="add" onfocusout="addre()"><br><br>
+Medical report:<input type="radio" name="mres" value="pass" checked>Pass<input type="radio" name="result" value="fail" >fail<br>
+
+<br><button  type="submit" value="Submit">Submit</button> 
+</form> 
+</div> </div> 
+</body>
+ </html>

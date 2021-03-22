@@ -1,0 +1,69 @@
+<?php
+	include'connection.php';
+	$bbid = $_POST['bbid'];
+	$pwd = $_POST['pwd'];
+	 $sql = "SELECT bbid,password FROM blood_bank WHERE bbid = '$bbid' and password = '$pwd'";
+      $result = mysqli_query($conn,$sql);
+      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+      $active = $row['active'];
+      
+      $count = mysqli_num_rows($result);
+		
+      if($count == 1) {
+         session_register("bbid");
+         $_SESSION['login_user'] = $bbid;
+         
+         header("location: bloodbankform.php");
+      }else {
+         $error = "Your Login Name or Password is invalid";
+      }
+   }
+
+
+
+?>
+
+<!DOCTYPE HTML>
+<html> 
+<head> 
+<script type="text/javascript">
+
+function bidname()
+{
+var c = /[$&+,:;=?@#|'<>.^*()%!-]/g;
+var asmall=/[a-z]/g;
+var abig=/[A-Z]/g;
+var t=new String();
+	t = document.f.text4.value;
+	if((t=="")||(t==" "))	
+	{
+		alert("Please enter a valid bloodbank id!");
+	}
+	else if(t.match(c))
+	{
+		alert("No special characters in bloodbank id!");
+	}
+	else if(t.match(asmall) || t.match(abig))
+	{
+		alert("No characters in bloodbank id!");
+	}
+    else if(t.length>6 || t.length<=5)
+    {
+         alert("invalid id!");
+	}
+}
+
+</script>
+</head> 
+<body> 
+  	
+<center> 
+<h1>Bloodbank Login</h1></center> 
+<form method='POST'  align="center" style="font-family: cursive;"> <br> 
+bloodbank id:<input align="left"  type="text" name="bbid" placeholder='Enter your bloodbank id'  onfocusout="bidname()"><br><br>
+Password:<input  type="password" name="pwd"  placeholder="Set Password"><br><br> 
+<button  type="submit" value="Submit">Submit</button> 
+</form> 
+
+</body> 
+</html>
